@@ -1,0 +1,45 @@
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>azmoon</title>
+</head>
+
+<body>
+
+	<form name="myForm">
+		<label for="userName">نام:</label>
+		<br />
+		<input type="text" name="userName" id="userName" required>
+		<br />
+		<label for="price">قیمت:</label>
+		<br />
+		<input type="number" name="price" id="price" required>
+		<br />
+		<input type="submit">
+	</form>
+
+</body>
+
+<script>
+
+	const h1 = document.querySelector("h1");
+	const myForm = document.forms["myForm"];
+
+	myForm.onsubmit = async (event) => {
+		event.preventDefault()
+		const res = await fetch('http://localhost:4000/confirmPayment', {
+			method: "POST",
+			body: JSON.stringify({ price: myForm.price.value, userName: myForm.userName.value }),
+			headers: { "Content-Type": "application/json", }
+		})
+		const rj = await res.json()
+		navigation.navigate(rj.value);
+	}
+
+
+
+</script>
+
+</html>

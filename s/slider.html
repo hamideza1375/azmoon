@@ -1,0 +1,32 @@
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+</head>
+<body>
+
+	<div id="slider" style="height: 200px;overflow: hidden;">
+		<img src="a1.jpg" height="200px" width="100%">
+		<img src="a2.jpg" height="200px" width="100%">
+		<img src="a3.jpg" height="200px" width="100%">
+	</div>
+
+	<div style="margin: 10px auto;width: 100px;">
+		<button onclick="handle('-')">left</button>
+		<button onclick="handle('+')">right</button>
+	</div>
+
+	<script>
+		const img = document.getElementsByTagName('img')
+		let count = 0, count2 = true, interval
+		function handle(param) {
+			if (count < 2 && param === '+') count++
+			if (count > 0 && param === '-') count--
+			clearInterval(interval)
+			for (let i in img)
+				if (img[i].style)
+					img[i].style.display = 'none'
+			  img[count].style.display = 'block'
+		};
+	</script>
+</body>
+</html>

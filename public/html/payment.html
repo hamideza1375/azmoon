@@ -1,0 +1,30 @@
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>payment</title>
+</head>
+
+<body>
+
+	<div style="text-align: center;">
+		<h3 style="color: #0c8; margin-top: 20px;">پرداخت موفق</h3>
+		<p id="lbl2"></p>
+		<p id="lbl3"></p>
+		<p id="lbl4"></p>
+	</div>
+
+</body>
+
+<script>
+
+	let query = new URLSearchParams(window.location.search);
+
+	document.getElementById("lbl2").innerHTML = `نام: ${query.get("userName")}`;
+	document.getElementById("lbl3").innerHTML = `قیمت: ${query.get("price")}`;
+	document.getElementById("lbl4").innerHTML = `تاریخ: ${new Date().toLocaleString('fa')}`;
+
+</script>
+
+</html>
